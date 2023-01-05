@@ -1,0 +1,13 @@
+minio.access:
+  name: minio
+  secret: minioPassword
+
+spring:
+  main:
+    banner-mode: off
+server:
+  port: 80
+
+springdoc:
+  swagger-ui:
+    enabled: true
