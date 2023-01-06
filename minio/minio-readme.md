@@ -7,5 +7,5 @@
 
 - [MinIO YouTube](https://www.youtube.com/@MINIO)
 
-### docker-compose up, than check GUI control panel at:
+###### docker-compose up, than check GUI control panel at:
 > http://localhost:13667

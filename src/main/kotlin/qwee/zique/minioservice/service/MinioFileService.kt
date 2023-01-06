@@ -62,6 +62,7 @@ class MinioFileService(
         ).also {
             fileOutputStream.close()
             logger.info { "File with name: '$fileName' uploaded to bucket: '$bucketName'" }
+            file.delete().apply { logger.info { "${file.toURI()} deleted from spring-boot application: $this" } }
         }
     }
 

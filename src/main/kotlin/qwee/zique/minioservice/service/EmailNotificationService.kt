@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import qwee.zique.minioservice.Constants.Mail.FROM
 import qwee.zique.minioservice.Constants.Mail.SUBJECT
 import qwee.zique.minioservice.config.JavaMailSenderConfig
+import java.net.InetAddress
 import javax.mail.internet.InternetAddress
 
 @Service
@@ -27,7 +28,13 @@ class EmailNotificationService(
             setFrom(InternetAddress(FROM, FROM))
             setTo(receiver)
             setSubject(SUBJECT)
-            setText("<p>You successfully upload <b>$fileName</b> to <b>$bucketName</b><br>Congrats &#128579;</p>", true)
+            setText(
+            """
+            |<p>You successfully upload <b>$fileName</b> to <b>$bucketName</b>
+            |<br>Congrats &#128579;</p>
+            |<p><a href="${InetAddress.getLocalHost().hostAddress}/file/$bucketName/$fileName/download">&#128048; Download this file</a></p>
+            """.trimMargin(), true
+            )
         }
         javaMailSender.send(message).also { logger.info { "e-mail notification sent to: $receiver" } }
     }
