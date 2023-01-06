@@ -1,13 +1,12 @@
-minio.access:
-  name: minio
-  secret: minioPassword
+server:
+  port: 80
 
 spring:
   main:
     banner-mode: off
-server:
-  port: 80
+  mail:
+    notification.enabled: true
 
-springdoc:
-  swagger-ui:
-    enabled: true
+minio.access:
+  name: minio
+  secret: minioPassword

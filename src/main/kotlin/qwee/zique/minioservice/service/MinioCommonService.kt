@@ -4,7 +4,7 @@ import io.minio.BucketExistsArgs
 import io.minio.MinioClient
 import mu.KLogging
 import org.springframework.stereotype.Service
-import qwee.zique.minioservice.Constants.BUCKET_WITH_NAME
+import qwee.zique.minioservice.Constants.MinioService.BUCKET_WITH_NAME
 
 @Service
 class MinioCommonService(

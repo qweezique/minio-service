@@ -5,7 +5,7 @@ import io.minio.MinioClient
 import io.minio.RemoveBucketArgs
 import io.minio.messages.Bucket
 import org.springframework.stereotype.Service
-import qwee.zique.minioservice.Constants.BUCKET_WITH_NAME
+import qwee.zique.minioservice.Constants.MinioService.BUCKET_WITH_NAME
 
 @Service
 class MinioBucketService(

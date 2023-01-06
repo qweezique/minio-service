@@ -4,7 +4,7 @@ import io.minio.*
 import io.minio.messages.Item
 import org.apache.commons.compress.utils.IOUtils
 import org.springframework.stereotype.Service
-import qwee.zique.minioservice.Constants.BUCKET_WITH_NAME
+import qwee.zique.minioservice.Constants.MinioService.BUCKET_WITH_NAME
 import qwee.zique.minioservice.exception.BucketNotFoundException
 import qwee.zique.minioservice.exception.ObjectNotFoundException
 import java.io.File
