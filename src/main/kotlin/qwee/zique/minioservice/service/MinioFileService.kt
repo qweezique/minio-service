@@ -2,7 +2,6 @@ package qwee.zique.minioservice.service
 
 import io.minio.*
 import io.minio.messages.Item
-import org.apache.commons.compress.utils.IOUtils
 import org.springframework.stereotype.Service
 import qwee.zique.minioservice.Constants.MinioService.BUCKET_WITH_NAME
 import qwee.zique.minioservice.exception.BucketNotFoundException
@@ -31,10 +30,9 @@ class MinioFileService(
     fun getListOfFilesInBucket(bucketName: String): List<String> =
         getFiles(bucketName).map { it.get().objectName() }.toList()
 
-    fun download(bucketName: String, fileName: String): ByteArray {
-        val stream = InputStream.nullInputStream().use { getObjectResponse(bucketName, fileName) }
-        return IOUtils.toByteArray(stream)
-    }
+    fun download(bucketName: String, fileName: String): ByteArray = InputStream.nullInputStream()
+        .use { getObjectResponse(bucketName, fileName)}
+        .use { it.readAllBytes() }
 
     private fun getObjectResponse(bucketName: String, objectName: String) =
         minioClient.getObject(

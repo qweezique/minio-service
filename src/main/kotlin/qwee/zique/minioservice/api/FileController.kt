@@ -29,9 +29,11 @@ class FileController(
         @PathVariable bucketName: String, @PathVariable objectName: String
     ): ResponseEntity<ByteArrayResource> {
         val resource = ByteArrayResource(fileService.download(bucketName, objectName))
-        return ResponseEntity.ok().contentLength(resource.contentLength())
+        return ResponseEntity.ok()
+            .contentLength(resource.contentLength())
             .contentType(MediaType.APPLICATION_OCTET_STREAM)
-            .header("Content-Disposition", "attachment; filename=${resource.filename}").body(resource)
+            .header("Content-Disposition", "attachment; filename=$objectName")
+            .body(resource)
     }
 
     //TODO: толстый контроллер -> понять и простить
